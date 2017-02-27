@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
+import React, {Component} from 'react';
+import Avatar from 'material-ui/Avatar';
+import {ListItem} from 'material-ui/List';
 
 export default class TeamList extends Component {
-  render() {
-    return (
-      <h1>Team List</h1>
-    )
-  }
+    render() {
+        return (
+            <ListItem primaryText={this.props.player.name} leftAvatar={< Avatar src = "cota.jpg" />}/>
+        )
+    }
 }

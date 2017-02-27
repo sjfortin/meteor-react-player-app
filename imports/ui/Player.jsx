@@ -1,15 +1,75 @@
 import React, {Component} from 'react';
 import {Card, CardMedia, CardText, CardTitle, CardActions} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import Avatar from 'material-ui/Avatar';
+import Chip from 'material-ui/Chip';
+import {blue200, blue900} from 'material-ui/styles/colors';
+
+const styles = {
+    chip: {
+        margin: 4
+    },
+    wrapper: {
+        display: 'flex',
+        flexWrap: 'wrap'
+    },
+    button: {
+        margin: 12
+    }
+};
 
 export default class Player extends Component {
     render() {
         return (
             <Card>
-                <CardMedia overlay={<CardTitle title="Lionel Messi" subtitle="Offense: 12 - Defense: 8" />}>
-                    <img src="messi.jpg"/>
+                <CardMedia overlay={<CardTitle title="Ed Cota" subtitle="Offense: 12 - Defense: 8" />}>
+                    <img src="cota.jpg"/>
                 </CardMedia>
                 <CardText>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                    <div style={styles.wrapper}>
+                        <Chip backgroundColor={blue200} style={styles.chip}>
+                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                                2
+                            </Avatar>
+                            Ball manipluation
+                        </Chip>
+                        <Chip backgroundColor={blue200} style={styles.chip}>
+                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                                2
+                            </Avatar>
+                            Kicking abilities
+                        </Chip>
+                        <Chip backgroundColor={blue200} style={styles.chip}>
+                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                                2
+                            </Avatar>
+                            Passing
+                        </Chip>
+                        <Chip backgroundColor={blue200} style={styles.chip}>
+                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                                2
+                            </Avatar>
+                            Game Strategy
+                        </Chip>
+                        <Chip backgroundColor={blue200} style={styles.chip}>
+                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                                2
+                            </Avatar>
+                            Duel/Tackling
+                        </Chip>
+                        <Chip backgroundColor={blue200} style={styles.chip}>
+                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                                2
+                            </Avatar>
+                            Field/Speed Coverage
+                        </Chip>
+                        <Chip backgroundColor={blue200} style={styles.chip}>
+                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                                2
+                            </Avatar>
+                            Blocking
+                        </Chip>
+                    </div>
                 </CardText>
                 <CardActions></CardActions>
             </Card>
