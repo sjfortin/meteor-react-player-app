@@ -19,59 +19,73 @@ const styles = {
 };
 
 export default class Player extends Component {
+  showEditForm() {
+    this.props.showEditForm();
+  }
     render() {
+      const player = this.props.player;
+      const defense = player.duelTackling + player.fieldCoverage + player.blockingAbilities + player.gameStrategy + player.playmakingRisks;
+      const offense = player.kickingAbilities + player.gameStrategy + player.ballManipulation + player.passingAbilities + player.playmakingRisks;
+      const total = player.kickingAbilities + player.gameStrategy + player.ballManipulation + player.passingAbilities + player.playmakingRisks + player.duelTackling + player.blockingAbilities;
+
         return (
             <Card>
-                <CardMedia overlay={<CardTitle title="Ed Cota" subtitle="Offense: 12 - Defense: 8" />}>
-                    <img src="cota.jpg"/>
+                <CardMedia overlay={<CardTitle title={player.name} subtitle={`Offense: ${offense} - Defense: ${defense} - Total: ${total}`} />}>
+                    <img src="messi.jpg"/>
                 </CardMedia>
                 <CardText>
                     <div style={styles.wrapper}>
                         <Chip backgroundColor={blue200} style={styles.chip}>
                             <Avatar size={32} color={blue200} backgroundColor={blue900}>
-                                2
+                                {player.ballManipulation}
                             </Avatar>
-                            Ball manipluation
+                            ballManipulation
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
                             <Avatar size={32} color={blue200} backgroundColor={blue900}>
-                                2
+                                {player.kickingAbilities}
                             </Avatar>
-                            Kicking abilities
+                            kickingAbilities
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
                             <Avatar size={32} color={blue200} backgroundColor={blue900}>
-                                2
+                                {player.passingAbilities}
                             </Avatar>
-                            Passing
+                            passingAbilities
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
                             <Avatar size={32} color={blue200} backgroundColor={blue900}>
-                                2
+                                {player.gameStrategy}
                             </Avatar>
-                            Game Strategy
+                            gameStrategy
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
                             <Avatar size={32} color={blue200} backgroundColor={blue900}>
-                                2
+                                {player.duelTackling}
                             </Avatar>
-                            Duel/Tackling
+                            duelTackling
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
                             <Avatar size={32} color={blue200} backgroundColor={blue900}>
-                                2
+                                {player.fieldCoverage}
                             </Avatar>
-                            Field/Speed Coverage
+                            fieldCoverage
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
                             <Avatar size={32} color={blue200} backgroundColor={blue900}>
-                                2
+                                {player.blockingAbilities}
                             </Avatar>
-                            Blocking
+                            blockingAbilities
                         </Chip>
                     </div>
                 </CardText>
-                <CardActions></CardActions>
+                <CardActions>
+                  <RaisedButton
+                    label="Edit player/stats"
+                    labelPoistion="before"
+                    style={styles.button}
+                    onClick={this.showEditForm.bind(this)}/>
+                </CardActions>
             </Card>
         )
     }

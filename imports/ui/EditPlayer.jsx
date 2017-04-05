@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import { browserHistory } from 'react-router';
-import { Players } from '../api/players';
 
-export default class New extends Component {
-    submitPlayer(event) {
+export default class Edit extends Component {
+    showTeamStats() {
+        this.props.showTeamStats();
+    }
+    editPlayer(event) {
         event.preventDefault();
 
         let player = {
+          _id: this.props.currentPlayer._id,
             name: this.refs.name.value,
             team: this.refs.team.value,
             ballManipulation: this.refs.ballManipulation.value,
@@ -22,35 +24,36 @@ export default class New extends Component {
             owner: Meteor.userId(),
         }
 
-        Meteor.call('insertPlayer', player, (error) => {
+        Meteor.call('updatePlayer', player, (error) => {
             if(error) {
                 alert("Oops something went wrong: " + error.reason);
             } else {
-                alert("Player added");
-                browserHistory.push('/');
+                alert("Player updated");
+                this.showTeamStats();
             }
         });
 
     }
     render() {
+        const currentPlayer = this.props.currentPlayer;
         return (
             <div className="row">
-                <form className="col s12" onSubmit={this.submitPlayer.bind(this)}>
+                <form className="col s12" onSubmit={this.editPlayer.bind(this)}>
                     <h3>Add a new player</h3>
 
                     <div className="row">
                         <div className="input-field col s6">
-                            <input placeholder="Name" ref="name" type="text" className="validate"/>
+                            <input placeholder="Name" ref="name" type="text" className="validate" defaultValue={currentPlayer.name}/>
                         </div>
                         <div className="input-field col s6">
-                            <input placeholder="Team" ref="team" type="text" className="validate"/>
+                            <input placeholder="Team" ref="team" type="text" className="validate" defaultValue={currentPlayer.team}/>
                         </div>
                     </div>
 
                     <div className="row">
                         <div className="input-field col s6">
                             <h5>Ball Manipulation</h5>
-                            <select className="browser-default" ref="ballManipulation">
+                            <select className="browser-default" ref="ballManipulation" defaultValue={currentPlayer.ballManipulation}>
                                 <option value="0">0 - Hasn't demonstrated skill</option>
                                 <option value="1">1 - Needs improvement</option>
                                 <option value="2">2 - Skill acquired</option>
@@ -59,7 +62,7 @@ export default class New extends Component {
                         </div>
                         <div className="input-field col s6">
                             <h5>Kicking Abilities</h5>
-                            <select className="browser-default" ref="kickingAbilities">
+                            <select className="browser-default" ref="kickingAbilities" defaultValue={currentPlayer.kickingAbilities}>
                                 <option value="0">0 - Hasn't demonstrated skill</option>
                                 <option value="1">1 - Needs improvement</option>
                                 <option value="2">2 - Skill acquired</option>
@@ -71,7 +74,7 @@ export default class New extends Component {
                     <div className="row">
                         <div className="input-field col s6">
                             <h5>Passing Abilities</h5>
-                            <select className="browser-default" ref="passingAbilities">
+                            <select className="browser-default" ref="passingAbilities" defaultValue={currentPlayer.passingAbilities}>
                                 <option value="0">0 - Hasn't demonstrated skill</option>
                                 <option value="1">1 - Needs improvement</option>
                                 <option value="2">2 - Skill acquired</option>
@@ -80,7 +83,7 @@ export default class New extends Component {
                         </div>
                         <div className="input-field col s6">
                             <h5>Duel Tackling</h5>
-                            <select className="browser-default" ref="duelTackling">
+                            <select className="browser-default" ref="duelTackling" defaultValue={currentPlayer.duelTackling}>
                                 <option value="0">0 - Hasn't demonstrated skill</option>
                                 <option value="1">1 - Needs improvement</option>
                                 <option value="2">2 - Skill acquired</option>
@@ -92,7 +95,7 @@ export default class New extends Component {
                     <div className="row">
                         <div className="input-field col s6">
                             <h5>Field Coverage - speed</h5>
-                            <select className="browser-default" ref="fieldCoverage">
+                            <select className="browser-default" ref="fieldCoverage" defaultValue={currentPlayer.fieldCoverage}>
                                 <option value="0">0 - Hasn't demonstrated skill</option>
                                 <option value="1">1 - Needs improvement</option>
                                 <option value="2">2 - Skill acquired</option>
@@ -101,7 +104,7 @@ export default class New extends Component {
                         </div>
                         <div className="input-field col s6">
                             <h5>Blocking Abilities</h5>
-                            <select className="browser-default" ref="blockingAbilities">
+                            <select className="browser-default" ref="blockingAbilities" defaultValue={currentPlayer.blockingAbilities}>
                                 <option value="0">0 - Hasn't demonstrated skill</option>
                                 <option value="1">1 - Needs improvement</option>
                                 <option value="2">2 - Skill acquired</option>
@@ -113,7 +116,7 @@ export default class New extends Component {
                     <div className="row">
                         <div className="input-field col s6">
                             <h5>Game Strategy</h5>
-                            <select className="browser-default" ref="gameStrategy">
+                            <select className="browser-default" ref="gameStrategy" defaultValue={currentPlayer.gameStrategy}>
                                 <option value="0">0 - Hasn't demonstrated skill</option>
                                 <option value="1">1 - Needs improvement</option>
                                 <option value="2">2 - Skill acquired</option>
@@ -122,7 +125,7 @@ export default class New extends Component {
                         </div>
                         <div className="input-field col s6">
                             <h5>Playmaking Risks</h5>
-                            <select className="browser-default" ref="playmakingRisks">
+                            <select className="browser-default" ref="playmakingRisks" defaultValue={currentPlayer.playmakingRisks}>
                                 <option value="0">0 - Hasn't demonstrated skill</option>
                                 <option value="1">1 - Needs improvement</option>
                                 <option value="2">2 - Skill acquired</option>
@@ -133,7 +136,7 @@ export default class New extends Component {
 
                     <div className="row">
                         <div className="input-field col s6">
-                            <textarea placeholder="Notes" ref="notes" type="text" className="materialize-textarea"/>
+                            <textarea placeholder="Notes" ref="notes" type="text" className="materialize-textarea" defaultValue={currentPlayer.notes}/>
                         </div>
                         <div className="input-field col s6">
                             <button className="btn waves-effect waves-light" type="submit" name="action">Submit<i className="material-icons right">send</i>
