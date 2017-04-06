@@ -72,7 +72,7 @@ export class App extends Component {
             return ( <Edit currentPlayer={this.state.currentPlayer}
             showTeamStats={this.showTeamStats}/>);
         } else {
-            return ( <TeamStats />);
+            return ( <TeamStats players={this.props.players} />);
         }
     }
 
@@ -81,19 +81,31 @@ export class App extends Component {
             <MuiThemeProvider>
                 <div className="container">
                     <div className="row">
-                        <AppBar title="Soccer App" iconClassNameRight="muidocs-icon-navigation-expand-more"
-                        showMenuIconButton={false}><AccountsWrapper /></AppBar>
+                        <AppBar
+                          title="Soccer App"
+                          iconClassNameRight="muidocs-icon-navigation-expand-more"
+                          showMenuIconButton={false}
+                          style={{backgroundColor: '#0277BD'}}>
+                          <AccountsWrapper />
+                        </AppBar>
 
                         <div className="col s12 m7"><Player player={this.state.currentPlayer} showEditForm={this.showEditForm}/></div>
                         <div className="col s12 m5">
-                            <h2>Team List</h2><Link to="/new" className="waves-effect waves-light btn">Add Player</Link>
+                            <h2>Team List</h2><Link to="/new" className="waves-effect waves-light btn light-blue darken-3">Add Player</Link>
                             <Divider/>
                             <List>
                                 {this.renderPlayers()}
                             </List>
                             <Divider/>
                         </div>
-                        <div className="col s12 m5">{this.showForm()}</div>
+                    </div>
+                    <div className="row">
+                      <div className="s12">
+                        <br/>
+                          <Divider/>
+                          {this.showForm()}
+                          <Divider/>
+                      </div>
                     </div>
                 </div>
             </MuiThemeProvider>

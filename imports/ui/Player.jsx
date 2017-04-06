@@ -3,7 +3,7 @@ import {Card, CardMedia, CardText, CardTitle, CardActions} from 'material-ui/Car
 import RaisedButton from 'material-ui/RaisedButton';
 import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
-import {blue200, blue900} from 'material-ui/styles/colors';
+import {blue200, lightBlue800, lightBlue50} from 'material-ui/styles/colors';
 
 const styles = {
     chip: {
@@ -36,43 +36,43 @@ export default class Player extends Component {
                 <CardText>
                     <div style={styles.wrapper}>
                         <Chip backgroundColor={blue200} style={styles.chip}>
-                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                            <Avatar size={32} color={lightBlue50} backgroundColor={lightBlue800}>
                                 {player.ballManipulation}
                             </Avatar>
                             ballManipulation
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
-                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                            <Avatar size={32} color={blue200} backgroundColor={lightBlue800}>
                                 {player.kickingAbilities}
                             </Avatar>
                             kickingAbilities
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
-                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                            <Avatar size={32} color={lightBlue50} backgroundColor={lightBlue800}>
                                 {player.passingAbilities}
                             </Avatar>
                             passingAbilities
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
-                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                            <Avatar size={32} color={lightBlue50} backgroundColor={lightBlue800}>
                                 {player.gameStrategy}
                             </Avatar>
                             gameStrategy
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
-                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                            <Avatar size={32} color={lightBlue50} backgroundColor={lightBlue800}>
                                 {player.duelTackling}
                             </Avatar>
                             duelTackling
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
-                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                            <Avatar size={32} color={lightBlue50} backgroundColor={lightBlue800}>
                                 {player.fieldCoverage}
                             </Avatar>
                             fieldCoverage
                         </Chip>
                         <Chip backgroundColor={blue200} style={styles.chip}>
-                            <Avatar size={32} color={blue200} backgroundColor={blue900}>
+                            <Avatar size={32} color={lightBlue50} backgroundColor={lightBlue800}>
                                 {player.blockingAbilities}
                             </Avatar>
                             blockingAbilities
